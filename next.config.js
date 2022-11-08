@@ -7,4 +7,7 @@ module.exports = {
     images: {
         domains: ["phpstack-841991-2998353.cloudwaysapps.com"],
     },
+    experimental: {
+        largePageDataBytes: 128 * 100000, // 128KB by default
+    },
 };

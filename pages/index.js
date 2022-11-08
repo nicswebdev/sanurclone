@@ -19,6 +19,7 @@ export default function Home({
     villasData,
     experiencesData,
     offersData,
+    reviewsData,
 }) {
     const responsive = {
         superLargeDesktop: {
@@ -355,7 +356,7 @@ export default function Home({
                 </div>
             </div>
 
-            {/* <div className="text-center bg-gray-50 px-16 pt-10 flex items-center justify-center">
+            <div className="text-center bg-gray-50 px-16 pt-10 flex items-center justify-center">
                 <div className="relative w-[240px] h-[80px]">
                     <Image
                         src={`https://phpstack-841991-2998353.cloudwaysapps.com/${homepageData.data.attributes.Review_Section_Logo.data.attributes.formats.thumbnail.url}`}
@@ -394,7 +395,7 @@ export default function Home({
                         {homepageData.data.attributes.Review_Read_More_Text}
                     </button>
                 </Link>
-            </div> */}
+            </div>
         </div>
     );
 }
@@ -416,9 +417,9 @@ export async function getServerSideProps() {
         "https://phpstack-841991-2998353.cloudwaysapps.com/api/offers?populate=*"
     ).then((res) => res.json());
 
-    // const reviewsData = await fetch(
-    //     "https://phpstack-841991-2998353.cloudwaysapps.com/api/reviews?populate=*&pagination[pageSize]=2"
-    // ).then((res) => res.json());
+    const reviewsData = await fetch(
+        "https://phpstack-841991-2998353.cloudwaysapps.com/api/reviews?populate=*&pagination[pageSize]=2"
+    ).then((res) => res.json());
 
     // console.log(
     //     homepageData.data.attributes.Content_Section_Kayumanis_Jimbaran.Image
@@ -430,7 +431,7 @@ export async function getServerSideProps() {
             villasData,
             experiencesData,
             offersData,
-            // reviewsData,
+            reviewsData,
         },
     };
 }
