@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+    reactStrictMode: true,
+};
 
-module.exports = nextConfig
+module.exports = {
+    images: {
+        domains: ["phpstack-841991-2998353.cloudwaysapps.com"],
+    },
+};

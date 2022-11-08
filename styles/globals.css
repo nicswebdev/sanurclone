@@ -1,26 +1,144 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "MrsEaves";
+        src: url("/fonts/MrsEavesRoman.woff2") format("woff2");
+        font-weight: 400;
+        font-display: swap;
+        font-style: normal;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    h1 {
+        font-size: 33px;
+        color: #333333;
+    }
+
+    body {
+        @apply bg-[#FFF] text-[#000] tracking-wide;
+    }
+
+    /* li {
+        cursor: pointer;
+    } */
+
+    p {
+        font-family: "Open Sans";
+        color: #666666;
+        font-size: 14px;
+    }
+
+    .footer p {
+        @apply text-xs leading-5;
+    }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.custom-img {
+    background-image: url("../public/assets/header-image.jpg");
 }
 
-* {
-  box-sizing: border-box;
+.custom-image {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.custom-image2 {
+    width: 100vw;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.custom-image3 {
+    width: 100vw;
+    height: 30vh;
+    object-fit: cover;
+}
+
+.custom-image4 {
+    width: 100vw;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.object-contain {
+    object-fit: contain;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.react-multiple-carousel__arrow {
+    z-index: 2 !important;
+}
+
+.custom-link {
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.logo-image {
+    width: 180px;
+}
+
+.line-left::after {
+    content: "";
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    width: 3rem;
+    border-bottom: thin solid currentColor;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.line-center {
+    line-height: 1.5;
+    position: relative;
+}
+
+.line-center::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 36px;
+    width: 3rem;
+    border-bottom: thin solid currentColor;
+}
+
+.back-linear:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent, transparent 60%, black);
+    z-index: 1;
+}
+
+.custom-ul ul {
+    list-style: disc;
+    column-count: 3;
+}
+
+.offer-inclusion ul {
+    list-style: disc;
+}
+
+.offer-inclusion li:nth-of-type(n + 8) {
+    display: none;
 }
