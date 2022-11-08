@@ -19,7 +19,6 @@ export default function Home({
     villasData,
     experiencesData,
     offersData,
-    reviewsData,
 }) {
     const responsive = {
         superLargeDesktop: {
@@ -431,7 +430,7 @@ export async function getServerSideProps() {
             villasData,
             experiencesData,
             offersData,
-            reviewsData,
+            // reviewsData,
         },
     };
 }
