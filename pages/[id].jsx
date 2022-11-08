@@ -400,7 +400,7 @@ export default function Home({
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const homepageData = await fetch(
         "https://phpstack-841991-2998353.cloudwaysapps.com/api/home-page?populate[Slider][populate]=*&populate[Content_Section_Kayumanis_Jimbaran][populate]=*&populate[Content_Section_Experience][populate]=*&populate[Content_Section_Wedding][populate]=*&populate[Content_Section_Kayumanis_Resto][populate]=*&populate[Content_Section_Kayumanis_Spa][populate]=*&populate[SEO][populate]=*&populate[Review_Section_Logo][populate]=*"
     ).then((res) => res.json());
