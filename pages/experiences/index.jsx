@@ -22,9 +22,13 @@ const details = ({expPageData, expsData}) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Hero />
-            <div className="text-center px-24 py-16">
-                <h1 className="text-black py-2 mb-8 text-2xl font-mrseaves line-center">
+            <Hero
+                heroImg={
+                    expPageData.data.attributes.Header_Image.data.attributes.url
+                }
+            />
+            <div className="text-center px-4 md:px-24 py-4 md:py-16">
+                <h1 className="text-[#333] py-4 mb-8 text-[33px]">
                     {expPageData.data.attributes.Title}
                 </h1>
 
@@ -35,7 +39,7 @@ const details = ({expPageData, expsData}) => {
                 if (index % 2 === 0) {
                     return (
                         <>
-                            <div className="max-w-full px-16 py-8">
+                            <div className="max-w-full px-4 md:px-16 py-4 md:py-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                     <div className="relative w-full h-[70vh]">
                                         <Image
@@ -48,8 +52,8 @@ const details = ({expPageData, expsData}) => {
                                             className="object-cover"
                                         />
                                     </div>
-                                    <div className="flex flex-col p-8">
-                                        <h1 className="text-black py-4 text-2xl font-mrseaves line-left">
+                                    <div className="flex flex-col justify-center p-4 md:p-8">
+                                        <h1 className="text-[#333] py-4 text-[33px] line-left">
                                             {item.attributes.Title}
                                         </h1>
                                         {parser(item.attributes.Descriptions)}
@@ -61,10 +65,10 @@ const details = ({expPageData, expsData}) => {
                 } else {
                     return (
                         <>
-                            <div className="max-w-full px-16 py-8">
+                            <div className="max-w-full px-4 md:px-16 py-4 md:py-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                                    <div className="flex flex-col p-8">
-                                        <h1 className="text-black py-4 text-2xl font-mrseaves line-left">
+                                    <div className="flex flex-col justify-center p-4 md:p-8">
+                                        <h1 className="text-[#333] py-4 text-[33px] line-left">
                                             {item.attributes.Title}
                                         </h1>
                                         {parser(item.attributes.Descriptions)}

@@ -5,10 +5,17 @@
 @layer base {
     @font-face {
         font-family: "MrsEaves";
-        src: url("/fonts/MrsEavesRoman.woff2") format("woff2");
-        font-weight: 400;
-        font-display: swap;
-        font-style: normal;
+        src: url("../public/fonts/MrsEavesOT-Roman.otf");
+    }
+
+    @font-face {
+        font-family: "OpenSans";
+        src: url("../public/fonts/OpenSans-Regular.ttf");
+    }
+
+    * {
+        text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
     }
 
     html {
@@ -16,12 +23,15 @@
     }
 
     h1 {
+        font-family: MrsEaves, Arial, sans-serif;
         font-size: 33px;
         color: #333333;
     }
 
     body {
-        @apply bg-[#FFF] text-[#000] tracking-wide;
+        background-color: #ffffff;
+        font-family: OpenSans, sans-serif;
+        color: #666666;
     }
 
     /* li {
@@ -29,9 +39,19 @@
     } */
 
     p {
-        font-family: "Open Sans";
-        color: #666666;
+        font-family: OpenSans, sans-serif;
+        color: #666666 !important;
         font-size: 14px;
+        line-height: 2em;
+        margin-bottom: 15px;
+    }
+
+    button {
+        font-family: OpenSans, sans-serif;
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 2em;
+        border-radius: 2px;
     }
 
     .footer p {
@@ -130,15 +150,119 @@
     z-index: 1;
 }
 
+.top-linear:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgb(31, 31, 31), transparent 30%, transparent);
+    z-index: 1;
+}
+
+.hero-linear:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgb(31, 31, 31), transparent 30%, transparent);
+    z-index: 1;
+    height: 26rem;
+}
+
 .custom-ul ul {
     list-style: disc;
     column-count: 3;
 }
 
-.offer-inclusion ul {
+.offer-inclusion ul,
+.offer-detail-inclusion ul {
     list-style: disc;
 }
 
 .offer-inclusion li:nth-of-type(n + 8) {
     display: none;
+}
+
+.img-full {
+    width: 100vw;
+    height: 100vh;
+}
+
+.sans {
+    font-family: OpenSans, sans-serif;
+}
+
+.custom-sans {
+    font-family: OpenSans, sans-serif;
+    color: #666666 !important;
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.custom-sans ul li {
+    font-family: OpenSans, sans-serif;
+    color: #666666 !important;
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.play-btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    /* -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite; */
+    color: white;
+}
+
+.play-btn:hover {
+    /* cursor: pointer;
+    animation-name: bounce;
+    -moz-animation-name: bounce; */
+}
+
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes bounce {
+    0%,
+    100%,
+    20%,
+    50%,
+    80% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-30px);
+        -ms-transform: translateY(-30px);
+        transform: translateY(-30px);
+    }
+    60% {
+        -webkit-transform: translateY(-15px);
+        -ms-transform: translateY(-15px);
+        transform: translateY(-15px);
+    }
 }

@@ -7,7 +7,7 @@ function PackageCard({packData}) {
         <div
             className="
         flex
-        p-6 w-300 h-300 md:p-2 md:w-300 md:h-300
+        p-0 w-300 h-300 md:p-2 md:w-300 md:h-300
         drop-shadow-md	
         rounded-md"
         >
@@ -27,13 +27,13 @@ function PackageCard({packData}) {
                             className="object-cover"
                         />
                         <div className="absolute bottom-[20px] left-[15px] z-10">
-                            <h3 className=" text-lg font-mrseaves text-white ">
+                            <h1 className="text-white text-lg">
                                 <Link
                                     href={`/wedding/${packData.attributes.Slug}`}
                                 >
                                     {packData.attributes.Title}
                                 </Link>
-                            </h3>
+                            </h1>
                             <Link href={`/wedding/${packData.attributes.Slug}`}>
                                 <span className="text-white text-xs border-b border-solid border-white pb-1">
                                     View Package

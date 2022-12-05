@@ -10,4 +10,8 @@ module.exports = {
     experimental: {
         largePageDataBytes: 128 * 100000, // 128KB by default
     },
+    i18n: {
+        locales: ["en", "ja", "zh"],
+        defaultLocale: "en",
+    },
 };

@@ -31,8 +31,7 @@ function RoomCard({dataRoom}) {
         <div
             className="
         flex
-        p-6 w-300 h-300 md:p-2 md:w-300 md:h-300
-        drop-shadow-md	
+        p-2 w-full h-300 md:p-2 md:w-300 md:h-300	
         rounded-md"
         >
             <div className="flex flex-col w-full border border-solid border-[#ebebeb]">
@@ -47,7 +46,10 @@ function RoomCard({dataRoom}) {
                     {dataRoom.attributes.Gallery.data.map((item, index) => {
                         return (
                             <>
-                                <div className="relative w-full h-[50vh]">
+                                <div
+                                    key={index}
+                                    className="relative w-full h-[50vh]"
+                                >
                                     <Image
                                         src={`https://phpstack-841991-2998353.cloudwaysapps.com/${item.attributes.formats.medium.url}`}
                                         alt={item.attributes.alternativeText}
@@ -60,11 +62,11 @@ function RoomCard({dataRoom}) {
                     })}
                 </Carousel>
                 <div className="px-3">
-                    <h3 className="text-lg pt-4 font-mrseaves ">
+                    <h1 className="text-[#333] pt-4 text-[25px]">
                         <Link href={`/villas/${dataRoom.attributes.Slug}`}>
                             {dataRoom.attributes.Title}
                         </Link>
-                    </h3>
+                    </h1>
                     <div className="flex items-center gap-2">
                         <span className="text-xs flex gap-2 items-center">
                             <BsArrowsFullscreen />
@@ -76,12 +78,15 @@ function RoomCard({dataRoom}) {
                             {dataRoom.attributes.Bed_Type}
                         </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 my-8">
+                    <div className="grid grid-cols-1 gap-2 my-8 md:grid-cols-2">
                         {dataRoom.attributes.Villa_Facilities.data.map(
                             (item, index) => {
                                 return (
                                     <>
-                                        <div className="flex gap-2 items-center">
+                                        <div
+                                            key={index}
+                                            className="flex gap-2 items-center"
+                                        >
                                             <div className="relative w-4 h-4">
                                                 <Image
                                                     src={`https://phpstack-841991-2998353.cloudwaysapps.com//${item.attributes.Icon.data.attributes.url}`}
@@ -103,13 +108,17 @@ function RoomCard({dataRoom}) {
                             }
                         )}
                     </div>
-                    <div className="flex gap-8  justify-center my-8">
-                        <button className="bg-[#A6631B] text-white p-2">
-                            BOOK NOW
-                        </button>
-                        <button className="bg-[#A6631B] text-white p-2">
-                            MORE DETAIL
-                        </button>
+                    <div className="flex gap-4  justify-center my-8">
+                        <Link href={`${dataRoom.attributes.Villa_Link}`}>
+                            <button className="bg-[#A6631B] text-white py-1 px-4 hover:bg-[#915516]">
+                                Book Now
+                            </button>
+                        </Link>
+                        <Link href={`/villas/${dataRoom.attributes.Slug}`}>
+                            <button className="bg-[#A6631B] text-white py-1 px-4 hover:bg-[#915516]">
+                                More Detail
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 {/* <p className="font-sans">{dataEx.attributes.Excerpt}</p> */}

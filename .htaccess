@@ -1,5 +1,0 @@
-# Redirect traffic to your port 3004
-
-RewriteEngine On
-RewriteBase /
-RewriteRule ^(.\*)?$ http://127.0.0.1:3004/$1 [P,L]

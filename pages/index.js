@@ -13,6 +13,12 @@ import RoomCard from "../components/RoomCard";
 import OffersCard from "../components/OffersCard";
 import ReviewCard from "../components/ReviewCard";
 import Link from "next/link";
+import CustomButtonGroup from "../components/CustomButtonGroup";
+import PlayButton from "../public/assets/play-button.png";
+import PauseButton from "../public/assets/pause-button.png";
+const ReactPlayer = dynamic(() => import("react-player"), {ssr: false});
+import {useEffect, useState} from "react";
+import dynamic from "next/dynamic";
 
 export default function Home({
     homepageData,
@@ -100,6 +106,17 @@ export default function Home({
             items: 1,
         },
     };
+
+    const [play, setPlay] = useState({
+        playing: false,
+    });
+
+    const {playing} = play;
+
+    const videoHandler = () => {
+        setPlay({...play, playing: !play.playing});
+    };
+
     return (
         <div>
             <Head>
@@ -118,37 +135,75 @@ export default function Home({
             {/* <Slider slides={SliderData} /> */}
             {/* <Hero /> */}
 
-            <div>
-                <Carousel
-                    responsive={responsive2}
-                    infinite={true}
-                    autoPlay={false}
-                    autoPlaySpeed={3200}
-                    showDots={false}
-                    className=""
-                >
-                    {homepageData.data.attributes.Slider.map((image, index) => {
-                        return (
-                            <>
-                                <div className="relative w-full h-screen">
-                                    <Image
-                                        src={`https://phpstack-841991-2998353.cloudwaysapps.com/${image.Image.data.attributes.formats.large.url}`}
-                                        alt={
-                                            image.Image.data.attributes
-                                                .alternativeText
-                                        }
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </div>
-                            </>
-                        );
-                    })}
-                </Carousel>
-            </div>
+            {playing ? (
+                <div className="player-wrapper flex justify-center items-center">
+                    <ReactPlayer
+                        url={homepageData.data.attributes.Video_URL}
+                        config={{
+                            youtube: {
+                                playerVars: {showinfo: 0, rel: 0},
+                            },
+                        }}
+                        playing={playing}
+                        onPause={videoHandler}
+                        width="100%"
+                        height="100%"
+                        className="react-player top-linear"
+                    />
+                    <Image
+                        onClick={videoHandler}
+                        src={PauseButton}
+                        alt="Play Button"
+                        className="play-btn w-12 z-[1] hover:animate-bounce"
+                        style={{top: "40%"}}
+                    />
+                </div>
+            ) : (
+                <div className="relative flex justify-center items-center">
+                    <Carousel
+                        responsive={responsive2}
+                        infinite={true}
+                        autoPlay={false}
+                        autoPlaySpeed={3200}
+                        showDots={false}
+                        customTransition="opacity 150ms cubic-bezier(0.4, 0, 0.2, 1)"
+                        transitionDuration={300}
+                        className="top-linear w-full h-screen"
+                    >
+                        {homepageData.data.attributes.Slider.map(
+                            (image, index) => {
+                                return (
+                                    <>
+                                        <div
+                                            key={index}
+                                            className="relative w-full h-screen flex justify-center items-center"
+                                        >
+                                            <Image
+                                                src={`https://phpstack-841991-2998353.cloudwaysapps.com/${image.Image.data.attributes.url}`}
+                                                alt={
+                                                    image.Image.data.attributes
+                                                        .alternativeText
+                                                }
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    </>
+                                );
+                            }
+                        )}
+                    </Carousel>
+                    <Image
+                        onClick={videoHandler}
+                        src={PlayButton}
+                        alt="Play Button"
+                        className="play-btn w-20 z-[1] hover:animate-bounce"
+                    />
+                </div>
+            )}
 
-            <div className="text-center px-16 py-16">
-                <h1 className="text-black py-4 text-2xl font-mrseaves">
+            <div className="text-center px-4 py-4 md:px-16 md:py-16">
+                <h1 className="text-[#333] py-4 text-[33px]">
                     {
                         homepageData.data.attributes
                             .Content_Section_Kayumanis_Jimbaran.Title
@@ -160,12 +215,12 @@ export default function Home({
                 )}
             </div>
 
-            <div className="max-w-full p-8 lg:pl-36 lg:pr-36">
+            <div className="max-w-full p-4 pl-2 pr-2 md:pl-28 md:pr-28">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     {villasData.data.map((room, index) => {
                         return (
                             <div key={index}>
-                                <RoomCard dataRoom={room} />
+                                <RoomCard key={index} dataRoom={room} />
                             </div>
                         );
                     })}
@@ -173,12 +228,12 @@ export default function Home({
             </div>
 
             <div className="text-center pt-4 sm:px-16 sm:pt-2">
-                <h1 className="text-black py-4 text-2xl font-mrseaves">
+                <h1 className="text-[#333333] py-4 text-[33px]">
                     {homepageData.data.attributes.Package_Special_Offers_Title}
                 </h1>
             </div>
 
-            <div className="py-10 px-16">
+            <div className="py-4 px-2 md:py-10 md:px-16">
                 <div>
                     <Carousel
                         responsive={responsive3}
@@ -190,15 +245,22 @@ export default function Home({
                         {offersData.data.map((item, index) => {
                             return (
                                 <>
-                                    <OffersCard packData={item} />
+                                    <OffersCard key={index} packData={item} />
                                 </>
                             );
                         })}
                     </Carousel>
+                    <div className="text-center mt-5">
+                        <Link href={`/offer`}>
+                            <span className="text-[#333] text-sm border-b border-solid border-[#333]">
+                                View All Offers
+                            </span>
+                        </Link>
+                    </div>
                 </div>
             </div>
 
-            <div className="max-w-full pt-16 px-16">
+            <div className="max-w-full px-4 pt-16 md:px-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div>
                         <Carousel
@@ -213,7 +275,10 @@ export default function Home({
                                 (image, index) => {
                                     return (
                                         <>
-                                            <div className="relative w-full h-[70vh]">
+                                            <div
+                                                key={index}
+                                                className="relative w-full h-[70vh]"
+                                            >
                                                 <Image
                                                     src={`https://phpstack-841991-2998353.cloudwaysapps.com//${image.attributes.formats.large.url}`}
                                                     alt={
@@ -230,8 +295,8 @@ export default function Home({
                             )}
                         </Carousel>
                     </div>
-                    <div className="flex flex-col justify-center p-16">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves">
+                    <div className="flex flex-col justify-center p-2 md:p-16">
+                        <h1 className="text-[#333333] py-4 text-[33px]">
                             {
                                 homepageData.data.attributes
                                     .Content_Section_Kayumanis_Resto.Title
@@ -241,17 +306,25 @@ export default function Home({
                             homepageData.data.attributes
                                 .Content_Section_Kayumanis_Resto.Content
                         )}
-                        <button className="bg-[#A6631B] text-white p-2 mt-10 w-[120px] hover:bg-black">
-                            Reserve
-                        </button>
+                        <Link
+                            href={`${homepageData.data.attributes.Content_Section_Kayumanis_Resto.Link}`}
+                        >
+                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-10 w-[120px] hover:bg-[#915516]">
+                                {
+                                    homepageData.data.attributes
+                                        .Content_Section_Kayumanis_Resto
+                                        .Link_Text
+                                }
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
-            <div className="max-w-full px-16">
+            <div className="max-w-full px-4 md:px-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                    <div className="flex flex-col justify-center text-right p-16">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves">
+                    <div className="flex flex-col justify-center text-right p-2 md:p-16">
+                        <h1 className="text-[#333333] py-4 text-[33px]">
                             {
                                 homepageData.data.attributes
                                     .Content_Section_Kayumanis_Spa.Title
@@ -261,9 +334,16 @@ export default function Home({
                             homepageData.data.attributes
                                 .Content_Section_Kayumanis_Spa.Content
                         )}
-                        <button className="bg-[#A6631B] text-white p-2 mt-10 w-[120px] hover:bg-black">
-                            Reserve
-                        </button>
+                        <Link
+                            href={`${homepageData.data.attributes.Content_Section_Kayumanis_Spa.Link}`}
+                        >
+                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-10 w-[120px] self-end hover:bg-[#915516]">
+                                {
+                                    homepageData.data.attributes
+                                        .Content_Section_Kayumanis_Spa.Link_Text
+                                }
+                            </button>
+                        </Link>
                     </div>
                     <div>
                         <Carousel
@@ -278,7 +358,10 @@ export default function Home({
                                 (image, index) => {
                                     return (
                                         <>
-                                            <div className="relative w-full h-[70vh]">
+                                            <div
+                                                key={index}
+                                                className="relative w-full h-[70vh]"
+                                            >
                                                 <Image
                                                     src={`https://phpstack-841991-2998353.cloudwaysapps.com//${image.attributes.formats.large.url}`}
                                                     alt={
@@ -298,7 +381,7 @@ export default function Home({
                 </div>
             </div>
 
-            <div className="max-w-full px-16">
+            <div className="max-w-full px-4 pt-8 md:px-16 md:pt-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
@@ -312,8 +395,8 @@ export default function Home({
                             className="object-cover"
                         />
                     </div>
-                    <div className="flex flex-col justify-center p-16">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves">
+                    <div className="flex flex-col justify-center p-2 md:p-16">
+                        <h1 className="text-[#333333] py-4 text-[33px]">
                             {
                                 homepageData.data.attributes
                                     .Content_Section_Wedding.Title
@@ -323,12 +406,22 @@ export default function Home({
                             homepageData.data.attributes.Content_Section_Wedding
                                 .Content
                         )}
+                        <Link
+                            href={`${homepageData.data.attributes.Content_Section_Wedding.Link}`}
+                        >
+                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-10 w-[120px] self-end hover:bg-[#915516]">
+                                {
+                                    homepageData.data.attributes
+                                        .Content_Section_Wedding.Link_Text
+                                }
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
             <div className="text-center pt-4 sm:px-16 sm:pt-16">
-                <h1 className="text-black py-4 text-2xl font-mrseaves">
+                <h1 className="text-[#333333] py-4 text-[33px]">
                     {
                         homepageData.data.attributes.Content_Section_Experience
                             .Title
@@ -336,7 +429,7 @@ export default function Home({
                 </h1>
             </div>
 
-            <div className="py-10 px-16">
+            <div className=" px-2 md:py-10 md:px-16">
                 <div>
                     <Carousel
                         responsive={responsive}
@@ -348,7 +441,7 @@ export default function Home({
                         {experiencesData.data.map((item, index) => {
                             return (
                                 <>
-                                    <Card dataEx={item} />
+                                    <Card key={index} dataEx={item} />
                                 </>
                             );
                         })}
@@ -356,8 +449,8 @@ export default function Home({
                 </div>
             </div>
 
-            <div className="text-center bg-gray-50 px-16 pt-10 flex items-center justify-center">
-                <div className="relative w-[240px] h-[80px]">
+            <div className="text-center bg-gray-50 px-2 md:px-16 pt-10 flex items-center justify-center">
+                <div className="relative w-[240px] h-[110px]">
                     <Image
                         src={`https://phpstack-841991-2998353.cloudwaysapps.com/${homepageData.data.attributes.Review_Section_Logo.data.attributes.formats.thumbnail.url}`}
                         alt={
@@ -370,28 +463,33 @@ export default function Home({
                 </div>
             </div>
 
-            <div className="py-5 px-16 bg-gray-50">
+            <div className="py-5 px-2 md:px-16 bg-gray-50">
                 <div>
                     <Carousel
                         responsive={responsive4}
+                        arrows={false}
                         infinite={true}
                         autoPlay={false}
                         autoPlaySpeed={3200}
                         showDots={false}
+                        customButtonGroup={<CustomButtonGroup />}
+                        renderArrowsWhenDisabled={false}
+                        renderButtonGroupOutside
+                        className="font-light"
                     >
                         {reviewsData.data.map((item, index) => {
                             return (
                                 <>
-                                    <ReviewCard reviewData={item} />
+                                    <ReviewCard key={index} reviewData={item} />
                                 </>
                             );
                         })}
                     </Carousel>
                 </div>
             </div>
-            <div className="py-2 px-16 bg-gray-50 flex justify-center">
+            <div className="py-6 px-16 bg-gray-50 flex justify-center">
                 <Link href="/reviews">
-                    <button className="bg-[#A6631B] text-white px-3 py-2 hover:bg-black">
+                    <button className="bg-[#A6631B] text-white py-1 px-4 hover:bg-[#915516]">
                         {homepageData.data.attributes.Review_Read_More_Text}
                     </button>
                 </Link>

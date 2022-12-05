@@ -47,9 +47,14 @@ const details = ({weddingPageData, packagesData}) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Hero />
-            <div className="text-center px-24 py-16">
-                <h1 className="text-black py-2 mb-8 text-2xl font-mrseaves line-center">
+            <Hero
+                heroImg={
+                    weddingPageData.data.attributes.Header_Image.data.attributes
+                        .url
+                }
+            />
+            <div className="text-center px-4 md:px-24 py-4 md:py-16">
+                <h1 className="text-[#333] py-4 mb-8 text-[33px] line-center">
                     {weddingPageData.data.attributes.Title}
                 </h1>
 
@@ -61,7 +66,7 @@ const details = ({weddingPageData, packagesData}) => {
                             weddingPageData.data.attributes.Reserve_Button_Link
                         }
                     >
-                        <button className="bg-[#000000] text-white p-3">
+                        <button className="bg-[#A6631B] text-white py-1 px-4 hover:bg-[#915516]">
                             {
                                 weddingPageData.data.attributes
                                     .Reserve_Button_Text
@@ -71,7 +76,7 @@ const details = ({weddingPageData, packagesData}) => {
                 </div>
             </div>
 
-            <div className="max-w-full px-16 py-8">
+            <div className="max-w-full px-4 md:px-16 py-4 md:py-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
@@ -85,8 +90,8 @@ const details = ({weddingPageData, packagesData}) => {
                             className="object-cover"
                         />
                     </div>
-                    <div className="flex flex-col justify-center p-8">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves line-left">
+                    <div className="flex flex-col justify-center p-4 md:p-8">
+                        <h1 className="text-[#333] py-4 text-[33px] line-left">
                             {
                                 weddingPageData.data.attributes
                                     .Content_Section_1.Title
@@ -100,10 +105,10 @@ const details = ({weddingPageData, packagesData}) => {
                 </div>
             </div>
 
-            <div className="max-w-full px-16 py-8">
+            <div className="max-w-full px-4 md:px-16 py-4 md:py-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                    <div className="flex flex-col justify-center p-8">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves line-left">
+                    <div className="flex flex-col justify-center p-4 md:p-8">
+                        <h1 className="text-[#333] py-4 text-[33px] line-left">
                             {
                                 weddingPageData.data.attributes
                                     .Content_Section_2.Title
@@ -129,7 +134,7 @@ const details = ({weddingPageData, packagesData}) => {
                 </div>
             </div>
 
-            <div className="max-w-full px-16 py-8">
+            <div className="max-w-full px-4 md:px-16 py-4 md:py-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
@@ -143,8 +148,8 @@ const details = ({weddingPageData, packagesData}) => {
                             className="object-cover"
                         />
                     </div>
-                    <div className="flex flex-col justify-center p-8">
-                        <h1 className="text-black py-4 text-2xl font-mrseaves line-left">
+                    <div className="flex flex-col justify-center p-4 md:p-8">
+                        <h1 className="text-[#333] py-4 text-[33px] line-left">
                             {
                                 weddingPageData.data.attributes
                                     .Content_Section_3.Title
@@ -154,17 +159,27 @@ const details = ({weddingPageData, packagesData}) => {
                             weddingPageData.data.attributes.Content_Section_3
                                 .Content
                         )}
+                        <Link
+                            href={`${weddingPageData.data.attributes.Content_Section_3.Link}`}
+                        >
+                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-10 w-[180px] self-end hover:bg-[#915516]">
+                                {
+                                    weddingPageData.data.attributes
+                                        .Content_Section_3.Link_Text
+                                }
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
 
-            <div className="text-center px-24 pt-16">
-                <h1 className="text-black py-2 mb-8 text-2xl font-mrseaves line-center">
+            <div className="text-center px-4 md:px-24 pt-8">
+                <h1 className="text-[#333] py-4 mb-8 text-[33px] line-center">
                     {weddingPageData.data.attributes.Wedding_Package_Title}
                 </h1>
             </div>
 
-            <div className="max-w-full px-16 pb-8">
+            <div className="max-w-full px-4 md:px-16 pb-8">
                 <Carousel
                     responsive={responsive}
                     infinite={true}

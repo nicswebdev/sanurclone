@@ -28,19 +28,38 @@ const details = ({packageDetailData}) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Hero />
-            <div className="px-24 py-16">
-                <h1 className="text-black py-1 text-2xl font-mrseaves line-left">
+            <Hero
+                heroImg={
+                    packageDetailData.data[0].attributes.Image.data.attributes
+                        .url
+                }
+            />
+            <div className="px-4 md:px-24 py-4 md:py-16">
+                <h1 className="text-[#333] py-4 text-[33px] line-left">
                     {packageDetailData.data[0].attributes.Title}
                 </h1>
                 <h1 className="text-black text-lg mb-4 font-mrseaves">
                     {packageDetailData.data[0].attributes.Package_Rate}
                 </h1>
 
-                {parser(packageDetailData.data[0].attributes.Inclusions)}
+                <div className="custom-sans offer-detail-inclusion pl-6">
+                    {parser(packageDetailData.data[0].attributes.Inclusions)}
+                </div>
+
+                <h1 className="text-[#333] py-4 mt-8 text-[33px] line-left">
+                    {
+                        packageDetailData.data[0].attributes
+                            .Terms_Condisitons_Text
+                    }
+                </h1>
+                <div className="custom-sans offer-detail-inclusion pl-6">
+                    {parser(
+                        packageDetailData.data[0].attributes.Terms_Conditions
+                    )}
+                </div>
                 <div className="flex gap-4 items-center my-8">
                     <Link href={`/`}>
-                        <button className="bg-[#A6631B] text-white py-2 px-3">
+                        <button className="bg-[#A6631B] text-white py-1 px-4 hover:bg-[#915516]">
                             {
                                 packageDetailData.data[0].attributes
                                     .Enquire_Now_Button_Text
@@ -48,14 +67,6 @@ const details = ({packageDetailData}) => {
                         </button>
                     </Link>
                 </div>
-
-                <h1 className="text-black py-2 mt-8 text-2xl font-mrseaves line-left">
-                    {
-                        packageDetailData.data[0].attributes
-                            .Terms_Condisitons_Text
-                    }
-                </h1>
-                {parser(packageDetailData.data[0].attributes.Terms_Conditions)}
             </div>
         </>
     );

@@ -6,12 +6,14 @@ import rating from "../public/assets/5-rates.png";
 
 function ReviewCard({reviewData}) {
     return (
-        <div className="py-8 px-16 text-center">
-            <h1 className="text-lg font-medium font-mrseaves">
+        <div className="py-8 px-2 md:px-16 text-center">
+            <h1 className="text-lg font-light font-mrseaves">
                 {`"${reviewData.attributes.Title}"`}
             </h1>
-            <div className="flex mt-2 items-center gap-1 justify-center font-medium">
-                {reviewData.attributes.Name}
+            <div className="flex mt-2 items-center gap-2 justify-center font-medium">
+                <span className="text-[14px]">
+                    {reviewData.attributes.Name}
+                </span>
                 <span>~</span>
                 <div className="relative w-[80px] h-[40px]">
                     <Image
@@ -22,7 +24,7 @@ function ReviewCard({reviewData}) {
                     />
                 </div>
             </div>
-            <div className="mt-2 text-xs">
+            <div className="mt-2 text-xs font-light">
                 {parser(reviewData.attributes.Comment)}
             </div>
         </div>

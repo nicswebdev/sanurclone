@@ -23,9 +23,14 @@ const reviews = ({reviewsPageData, reviewsData}) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Hero />
+            <Hero
+                heroImg={
+                    reviewsPageData.data.attributes.Header_Image.data.attributes
+                        .url
+                }
+            />
             <div className="text-center px-16 pt-10 flex items-center justify-center">
-                <div className="relative w-[300px] h-[80px]">
+                <div className="relative w-[240px] h-[120px]">
                     <Image
                         src={`https://phpstack-841991-2998353.cloudwaysapps.com/${reviewsPageData.data.attributes.Tripadvisor_Logo.data.attributes.formats.thumbnail.url}`}
                         alt={
@@ -42,7 +47,7 @@ const reviews = ({reviewsPageData, reviewsData}) => {
                     return (
                         <>
                             <div className="py-8 border-b border-solid border-[#cecece]">
-                                <h1 className="text-xl font-medium font-mrseaves">
+                                <h1 className="text-[#333] py-4 font-medium text-[25px]">
                                     {`"${item.attributes.Title}"`}
                                 </h1>
                                 <div className="flex mt-2 items-center gap-1 font-medium">
@@ -71,7 +76,7 @@ const reviews = ({reviewsPageData, reviewsData}) => {
 
 export default reviews;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const reviewsPageData = await fetch(
         "https://phpstack-841991-2998353.cloudwaysapps.com/api/review-page?populate=*"
     ).then((res) => res.json());
