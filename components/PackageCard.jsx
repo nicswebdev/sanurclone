@@ -18,7 +18,7 @@ function PackageCard({packData}) {
                 >
                     <div className="relative w-full h-[65vh] back-linear">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com/${packData.attributes.Image.data.attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${packData.attributes.Image.data.attributes.formats.medium.url}`}
                             alt={
                                 packData.attributes.Image.data.attributes
                                     .alternativeText

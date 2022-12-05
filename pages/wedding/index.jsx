@@ -80,7 +80,7 @@ const details = ({weddingPageData, packagesData}) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com//${weddingPageData.data.attributes.Content_Section_1.Image.data[0].attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${weddingPageData.data.attributes.Content_Section_1.Image.data[0].attributes.formats.medium.url}`}
                             alt={
                                 weddingPageData.data.attributes
                                     .Content_Section_1.Image.data[0].attributes
@@ -121,7 +121,7 @@ const details = ({weddingPageData, packagesData}) => {
                     </div>
                     <div className="relative w-full h-[70vh]">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com//${weddingPageData.data.attributes.Content_Section_2.Image.data[0].attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${weddingPageData.data.attributes.Content_Section_2.Image.data[0].attributes.formats.medium.url}`}
                             alt={
                                 weddingPageData.data.attributes
                                     .Content_Section_2.Image.data[0].attributes
@@ -138,7 +138,7 @@ const details = ({weddingPageData, packagesData}) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com//${weddingPageData.data.attributes.Content_Section_3.Image.data[0].attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${weddingPageData.data.attributes.Content_Section_3.Image.data[0].attributes.formats.medium.url}`}
                             alt={
                                 weddingPageData.data.attributes
                                     .Content_Section_3.Image.data[0].attributes
@@ -204,11 +204,11 @@ export default details;
 
 export async function getServerSideProps() {
     const weddingPageData = await fetch(
-        `https://phpstack-841991-2998353.cloudwaysapps.com/api/wedding-page?populate[SEO][populate]=*&populate[Content_Section_1][populate]=*&populate[Content_Section_2][populate]=*&populate[Content_Section_3][populate]=*&populate[Header_Image][populate]=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/wedding-page?populate[SEO][populate]=*&populate[Content_Section_1][populate]=*&populate[Content_Section_2][populate]=*&populate[Content_Section_3][populate]=*&populate[Header_Image][populate]=*`
     ).then((res) => res.json());
 
     const packagesData = await fetch(
-        `https://phpstack-841991-2998353.cloudwaysapps.com/api/wedding-packages?populate=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/wedding-packages?populate=*`
     ).then((res) => res.json());
 
     return {

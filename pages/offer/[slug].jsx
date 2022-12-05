@@ -163,11 +163,11 @@ export async function getServerSideProps({params}) {
     const slug = params.slug;
 
     const offerDetailData = await fetch(
-        `https://phpstack-841991-2998353.cloudwaysapps.com/api/offers?filters[slug][$eq]=${slug}&populate=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/offers?filters[slug][$eq]=${slug}&populate=*`
     ).then((res) => res.json());
 
     const offersData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/offers?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/offers?populate=*"
     ).then((res) => res.json());
 
     return {

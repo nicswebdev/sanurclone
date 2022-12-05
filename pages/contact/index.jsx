@@ -52,7 +52,7 @@ export default reviews;
 
 export async function getServerSideProps() {
     const contactPageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/contact-page?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/contact-page?populate=*"
     ).then((res) => res.json());
 
     return {

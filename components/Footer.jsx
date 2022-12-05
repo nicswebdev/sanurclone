@@ -15,21 +15,21 @@ function Footer() {
 
     const getData = async () =>
         await fetch(
-            "https://phpstack-841991-2998353.cloudwaysapps.com/api/footer?populate=*"
+            "https://phpstack-841991-3041837.cloudwaysapps.com/api/footer?populate=*"
         )
             .then((res) => res.json())
             .then((data) => setData(data));
 
     const getFooterNav = async () =>
         await fetch(
-            "https://phpstack-841991-2998353.cloudwaysapps.com/api/navigation/render/footer-navigation?type=TREE"
+            "https://phpstack-841991-3041837.cloudwaysapps.com/api/navigation/render/footer-navigation?type=TREE"
         )
             .then((res) => res.json())
             .then((data) => setFooterNav(data));
 
     const getSitemapNav = async () =>
         await fetch(
-            "https://phpstack-841991-2998353.cloudwaysapps.com/api/navigation/render/sitemap-navigation"
+            "https://phpstack-841991-3041837.cloudwaysapps.com/api/navigation/render/sitemap-navigation"
         )
             .then((res) => res.json())
             .then((data) => setSitemap(data));
@@ -47,7 +47,7 @@ function Footer() {
                     <div className="relative w-[260px] h-[120px] border-b border-solid border-[#dfdfdf]">
                         {data && (
                             <Image
-                                src={`https://phpstack-841991-2998353.cloudwaysapps.com//${data.data.attributes.FooterLogo.data.attributes.url}`}
+                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${data.data.attributes.FooterLogo.data.attributes.url}`}
                                 alt="logo-kayumanis"
                                 fill
                                 className="object-cover pb-8"
@@ -209,7 +209,7 @@ function Footer() {
                     <div className="relative w-[70px] h-[70px]">
                         {data && (
                             <Image
-                                src={`https://phpstack-841991-2998353.cloudwaysapps.com//${data.data.attributes.Tripadvisor_Badge.data.attributes.url}`}
+                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${data.data.attributes.Tripadvisor_Badge.data.attributes.url}`}
                                 alt="logo-tripadvisor"
                                 fill
                                 className="object-cover"

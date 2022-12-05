@@ -32,7 +32,7 @@ const reviews = ({reviewsPageData, reviewsData}) => {
             <div className="text-center px-16 pt-10 flex items-center justify-center">
                 <div className="relative w-[240px] h-[120px]">
                     <Image
-                        src={`https://phpstack-841991-2998353.cloudwaysapps.com/${reviewsPageData.data.attributes.Tripadvisor_Logo.data.attributes.formats.thumbnail.url}`}
+                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${reviewsPageData.data.attributes.Tripadvisor_Logo.data.attributes.formats.thumbnail.url}`}
                         alt={
                             reviewsPageData.data.attributes.Tripadvisor_Logo
                                 .data.attributes.alternativeText
@@ -78,11 +78,11 @@ export default reviews;
 
 export async function getServerSideProps() {
     const reviewsPageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/review-page?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/review-page?populate=*"
     ).then((res) => res.json());
 
     const reviewsData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/reviews?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/reviews?populate=*"
     ).then((res) => res.json());
 
     return {

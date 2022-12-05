@@ -40,7 +40,7 @@ const details = ({spaDetailData}) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com//${spaDetailData.data.attributes.Signature_Menu.Image.data[0].attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${spaDetailData.data.attributes.Signature_Menu.Image.data[0].attributes.formats.medium.url}`}
                             alt={
                                 spaDetailData.data.attributes.Signature_Menu
                                     .Image.data[0].attributes.alternativeText
@@ -83,7 +83,7 @@ export default details;
 
 export async function getServerSideProps() {
     const spaDetailData = await fetch(
-        `https://phpstack-841991-2998353.cloudwaysapps.com/api/spa-page?populate[Signature_Menu][populate]=*&populate[SEO][populate]=*&populate[Header_Image][populate]=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/spa-page?populate[Signature_Menu][populate]=*&populate[SEO][populate]=*&populate[Header_Image][populate]=*`
     ).then((res) => res.json());
 
     return {

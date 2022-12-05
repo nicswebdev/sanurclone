@@ -46,7 +46,7 @@ const villas = ({villasPageData, villasData}) => {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div className="relative w-full h-[60vh]">
                                     <Image
-                                        src={`https://phpstack-841991-2998353.cloudwaysapps.com//${item.attributes.Featured_Image.data.attributes.formats.medium.url}`}
+                                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${item.attributes.Featured_Image.data.attributes.formats.medium.url}`}
                                         alt={
                                             item.attributes.Featured_Image.data
                                                 .attributes.alternativeText
@@ -81,7 +81,7 @@ const villas = ({villasPageData, villasData}) => {
                                                         <div className="flex gap-2 items-center">
                                                             <div className="relative w-4 h-4">
                                                                 <Image
-                                                                    src={`https://phpstack-841991-2998353.cloudwaysapps.com//${items.attributes.Icon.data.attributes.url}`}
+                                                                    src={`https://phpstack-841991-3041837.cloudwaysapps.com/${items.attributes.Icon.data.attributes.url}`}
                                                                     alt={
                                                                         items
                                                                             .attributes
@@ -135,11 +135,11 @@ export default villas;
 
 export async function getServerSideProps() {
     const villasPageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/villa-page?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/villa-page?populate=*"
     ).then((res) => res.json());
 
     const villasData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
     ).then((res) => res.json());
 
     return {

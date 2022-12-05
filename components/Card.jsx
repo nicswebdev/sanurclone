@@ -14,7 +14,7 @@ function Card({dataEx}) {
             <div className="flex flex-col w-full">
                 <div className="relative w-full h-[55vh] back-linear">
                     <Image
-                        src={`https://phpstack-841991-2998353.cloudwaysapps.com/${dataEx.attributes.Image.data.attributes.formats.medium.url}`}
+                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${dataEx.attributes.Image.data.attributes.formats.medium.url}`}
                         alt={
                             dataEx.attributes.Image.data.attributes
                                 .alternativeText

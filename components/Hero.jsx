@@ -7,7 +7,7 @@ const Hero = ({heroImg}) => {
             {/* <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/40 z-[2]" /> */}
             <div className="relative w-full h-[26rem]">
                 <Image
-                    src={`https://phpstack-841991-2998353.cloudwaysapps.com/${heroImg}`}
+                    src={`https://phpstack-841991-3041837.cloudwaysapps.com/${heroImg}`}
                     alt="Header Image"
                     fill
                     className="object-cover"

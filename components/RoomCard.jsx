@@ -51,7 +51,7 @@ function RoomCard({dataRoom}) {
                                     className="relative w-full h-[50vh]"
                                 >
                                     <Image
-                                        src={`https://phpstack-841991-2998353.cloudwaysapps.com/${item.attributes.formats.medium.url}`}
+                                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${item.attributes.formats.medium.url}`}
                                         alt={item.attributes.alternativeText}
                                         fill
                                         className="object-cover"
@@ -89,7 +89,7 @@ function RoomCard({dataRoom}) {
                                         >
                                             <div className="relative w-4 h-4">
                                                 <Image
-                                                    src={`https://phpstack-841991-2998353.cloudwaysapps.com//${item.attributes.Icon.data.attributes.url}`}
+                                                    src={`https://phpstack-841991-3041837.cloudwaysapps.com/${item.attributes.Icon.data.attributes.url}`}
                                                     alt={
                                                         item.attributes.Icon
                                                             .data.attributes

@@ -110,14 +110,14 @@ const Navbar = () => {
 
     const getData = async () =>
         await fetch(
-            "https://phpstack-841991-2998353.cloudwaysapps.com/api/header?populate=*"
+            "https://phpstack-841991-3041837.cloudwaysapps.com/api/header?populate=*"
         )
             .then((res) => res.json())
             .then((data) => setData(data));
 
     const getNav = async () =>
         await fetch(
-            "https://phpstack-841991-2998353.cloudwaysapps.com/api/navigation/render/1?type=TREE"
+            "https://phpstack-841991-3041837.cloudwaysapps.com/api/navigation/render/1?type=TREE"
         )
             .then((res) => res.json())
             .then((data) => setNavigation(data));
@@ -173,12 +173,11 @@ const Navbar = () => {
             <div className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white">
                 <Link href="/">
                     {data && (
-                        <div className="relative w-[210px] h-[90px]">
+                        <div className="relative w-[245px] h-[58px]">
                             <Image
-                                src={`https://phpstack-841991-2998353.cloudwaysapps.com/${logo}`}
+                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${logo}`}
                                 alt="logo-kayumanis"
                                 fill
-                                className="object-cover"
                                 unoptimized
                             />
                         </div>
@@ -283,15 +282,23 @@ const Navbar = () => {
                             CN
                         </option>
                     </select>
-                    <button
+                    <Link
+                        href={`https://reservations.travelclick.com/76600?RatePlanId=6567066`}
+                        target="_blank"
                         className="py-1 px-4 border text-sm"
                         style={{
                             color: `${textColor}`,
                             borderColor: `${textColor}`,
                         }}
                     >
-                        BOOK NOW
-                    </button>
+                        <button
+                            style={{
+                                color: `${textColor}`,
+                            }}
+                        >
+                            {data && data.data.attributes.Book_Now_Text}
+                        </button>
+                    </Link>
                 </div>
 
                 <div onClick={handleNav} className="block sm:hidden z-40">

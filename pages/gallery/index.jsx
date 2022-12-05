@@ -42,7 +42,7 @@ export default gallery;
 
 export async function getServerSideProps() {
     const galleryPageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/gallery-page?populate[Header_Image][populate]=*&populate[Villa][populate]=*&populate[Activities][populate]=*&populate[Wedding][populate]=*&populate[Spa][populate]=*&populate[Restaurant][populate]=*&populate[Villa_Ground][populate]=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/gallery-page?populate[Header_Image][populate]=*&populate[Villa][populate]=*&populate[Wedding][populate]=*&populate[Restaurant][populate]=*&populate[Spa][populate]=*&populate[Surrounding][populate]=*"
     ).then((res) => res.json());
 
     return {

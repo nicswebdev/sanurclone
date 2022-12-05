@@ -179,7 +179,7 @@ export default function Home({
                                             className="relative w-full h-screen flex justify-center items-center"
                                         >
                                             <Image
-                                                src={`https://phpstack-841991-2998353.cloudwaysapps.com/${image.Image.data.attributes.url}`}
+                                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${image.Image.data.attributes.url}`}
                                                 alt={
                                                     image.Image.data.attributes
                                                         .alternativeText
@@ -206,12 +206,12 @@ export default function Home({
                 <h1 className="text-[#333] py-4 text-[33px]">
                     {
                         homepageData.data.attributes
-                            .Content_Section_Kayumanis_Jimbaran.Title
+                            .Content_Section_Kayumanis_Sanur.Title
                     }
                 </h1>
                 {ReactHtmlParser(
-                    homepageData.data.attributes
-                        .Content_Section_Kayumanis_Jimbaran.Content
+                    homepageData.data.attributes.Content_Section_Kayumanis_Sanur
+                        .Content
                 )}
             </div>
 
@@ -280,7 +280,7 @@ export default function Home({
                                                 className="relative w-full h-[70vh]"
                                             >
                                                 <Image
-                                                    src={`https://phpstack-841991-2998353.cloudwaysapps.com//${image.attributes.formats.large.url}`}
+                                                    src={`https://phpstack-841991-3041837.cloudwaysapps.com/${image.attributes.formats.large.url}`}
                                                     alt={
                                                         image.attributes
                                                             .alternativeText
@@ -363,7 +363,7 @@ export default function Home({
                                                 className="relative w-full h-[70vh]"
                                             >
                                                 <Image
-                                                    src={`https://phpstack-841991-2998353.cloudwaysapps.com//${image.attributes.formats.large.url}`}
+                                                    src={`https://phpstack-841991-3041837.cloudwaysapps.com/${image.attributes.formats.large.url}`}
                                                     alt={
                                                         image.attributes
                                                             .alternativeText
@@ -385,7 +385,7 @@ export default function Home({
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                     <div className="relative w-full h-[70vh]">
                         <Image
-                            src={`https://phpstack-841991-2998353.cloudwaysapps.com//${homepageData.data.attributes.Content_Section_Wedding.Image.data[0].attributes.formats.medium.url}`}
+                            src={`https://phpstack-841991-3041837.cloudwaysapps.com/${homepageData.data.attributes.Content_Section_Wedding.Image.data[0].attributes.formats.medium.url}`}
                             alt={
                                 homepageData.data.attributes
                                     .Content_Section_Wedding.Image.data[0]
@@ -452,7 +452,7 @@ export default function Home({
             <div className="text-center bg-gray-50 px-2 md:px-16 pt-10 flex items-center justify-center">
                 <div className="relative w-[240px] h-[110px]">
                     <Image
-                        src={`https://phpstack-841991-2998353.cloudwaysapps.com/${homepageData.data.attributes.Review_Section_Logo.data.attributes.formats.thumbnail.url}`}
+                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${homepageData.data.attributes.Review_Section_Logo.data.attributes.formats.thumbnail.url}`}
                         alt={
                             homepageData.data.attributes.Review_Section_Logo
                                 .data.attributes.alternativeText
@@ -500,23 +500,23 @@ export default function Home({
 
 export async function getServerSideProps() {
     const homepageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/home-page?populate[Slider][populate]=*&populate[Content_Section_Kayumanis_Jimbaran][populate]=*&populate[Content_Section_Experience][populate]=*&populate[Content_Section_Wedding][populate]=*&populate[Content_Section_Kayumanis_Resto][populate]=*&populate[Content_Section_Kayumanis_Spa][populate]=*&populate[SEO][populate]=*&populate[Review_Section_Logo][populate]=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/home-page?populate[Slider][populate]=*&populate[Content_Section_Kayumanis_Sanur][populate]=*&populate[Content_Section_Experience][populate]=*&populate[Content_Section_Wedding][populate]=*&populate[Content_Section_Kayumanis_Resto][populate]=*&populate[Content_Section_Kayumanis_Spa][populate]=*&populate[SEO][populate]=*&populate[Review_Section_Logo][populate]=*"
     ).then((res) => res.json());
 
     const villasData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
     ).then((res) => res.json());
 
     const experiencesData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/experiences?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/experiences?populate=*"
     ).then((res) => res.json());
 
     const offersData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/offers?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/offers?populate=*"
     ).then((res) => res.json());
 
     const reviewsData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/reviews?populate=*&pagination[pageSize]=2"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/reviews?populate=*&pagination[pageSize]=2"
     ).then((res) => res.json());
 
     // console.log(

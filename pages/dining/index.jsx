@@ -56,7 +56,14 @@ const details = ({expPageData, expsData}) => {
                                         <h1 className="text-[#333] py-4 text-[33px] line-left">
                                             {item.attributes.Title}
                                         </h1>
-                                        {parser(item.attributes.Descriptions)}
+                                        {parser(item.attributes.Excerpt)}
+                                        <Link
+                                            href={`dining/${item.attributes.Slug}`}
+                                        >
+                                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-8 hover:bg-[#915516]">
+                                                More Detail
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +78,14 @@ const details = ({expPageData, expsData}) => {
                                         <h1 className="text-[#333] py-4 text-[33px] line-left">
                                             {item.attributes.Title}
                                         </h1>
-                                        {parser(item.attributes.Descriptions)}
+                                        {parser(item.attributes.Excerpt)}
+                                        <Link
+                                            href={`dining/${item.attributes.Slug}`}
+                                        >
+                                            <button className="bg-[#A6631B] text-white py-1 px-4 mt-8 hover:bg-[#915516]">
+                                                More Detail
+                                            </button>
+                                        </Link>
                                     </div>
                                     <div className="relative w-full h-[70vh]">
                                         <Image
@@ -98,11 +112,11 @@ export default details;
 
 export async function getServerSideProps() {
     const expPageData = await fetch(
-        `https://phpstack-841991-3041837.cloudwaysapps.com/api/experience-page?populate=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/dining-page?populate=*`
     ).then((res) => res.json());
 
     const expsData = await fetch(
-        `https://phpstack-841991-3041837.cloudwaysapps.com/api/experiences?populate=*`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/restaurants?populate=*`
     ).then((res) => res.json());
 
     return {

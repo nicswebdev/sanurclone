@@ -55,7 +55,7 @@ const details = ({villaDetailData, villasData}) => {
                                     <div className="flex gap-2 items-center">
                                         <div className="relative w-5 h-5">
                                             <Image
-                                                src={`https://phpstack-841991-2998353.cloudwaysapps.com//${item.attributes.Icon.data.attributes.url}`}
+                                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${item.attributes.Icon.data.attributes.url}`}
                                                 alt={
                                                     item.attributes.Icon.data
                                                         .attributes
@@ -91,7 +91,7 @@ const details = ({villaDetailData, villasData}) => {
                                     <>
                                         <div className="relative md:w-[677px] h-[451px] md:col-span-3 row-span-2">
                                             <Image
-                                                src={`https://phpstack-841991-2998353.cloudwaysapps.com//${gallery.attributes.formats.medium.url}`}
+                                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${gallery.attributes.formats.medium.url}`}
                                                 alt={
                                                     gallery.attributes
                                                         .alternativeText
@@ -107,7 +107,7 @@ const details = ({villaDetailData, villasData}) => {
                                     <>
                                         <div className="relative md:w-[215px] h-[217px]">
                                             <Image
-                                                src={`https://phpstack-841991-2998353.cloudwaysapps.com//${gallery.attributes.formats.medium.url}`}
+                                                src={`https://phpstack-841991-3041837.cloudwaysapps.com/${gallery.attributes.formats.medium.url}`}
                                                 alt={
                                                     gallery.attributes
                                                         .alternativeText
@@ -164,11 +164,11 @@ export async function getServerSideProps({params}) {
     const slug = params.slug;
 
     const villaDetailData = await fetch(
-        `https://phpstack-841991-2998353.cloudwaysapps.com/api/villas?filters[slug][$eq]=${slug}&populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title`
+        `https://phpstack-841991-3041837.cloudwaysapps.com/api/villas?filters[slug][$eq]=${slug}&populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title`
     ).then((res) => res.json());
 
     const villasData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/villas?populate[Villa_Facilities][populate]=*&populate[Facilities][populate]=*&populate[Featured_Image][populate]=*&populate[Benefits][populate]=*&populate[SEO][populate]=*&populate[Gallery][populate]=*&populate[Villa_Facilities][sort]=Title"
     ).then((res) => res.json());
 
     return {

@@ -45,7 +45,7 @@ const offers = ({offersPageData, offersData}) => {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                                 <div className="relative w-full h-[60vh]">
                                     <Image
-                                        src={`https://phpstack-841991-2998353.cloudwaysapps.com//${item.attributes.Image.data.attributes.formats.medium.url}`}
+                                        src={`https://phpstack-841991-3041837.cloudwaysapps.com/${item.attributes.Image.data.attributes.formats.medium.url}`}
                                         alt={
                                             item.attributes.Image.data
                                                 .attributes.alternativeText
@@ -111,11 +111,11 @@ export default offers;
 
 export async function getServerSideProps() {
     const offersPageData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/offer-page?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/offer-page?populate=*"
     ).then((res) => res.json());
 
     const offersData = await fetch(
-        "https://phpstack-841991-2998353.cloudwaysapps.com/api/offers?populate=*"
+        "https://phpstack-841991-3041837.cloudwaysapps.com/api/offers?populate=*"
     ).then((res) => res.json());
 
     return {
